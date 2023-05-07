@@ -1,6 +1,4 @@
-const { db } = require('./db');
-
-const { Post, User } = require('./relationships');
+const { db } = require('./relationships');
 
 const init = async () => {
     try {
