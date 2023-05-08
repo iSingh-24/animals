@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Post } = require('../db/relationships');
 
 router.get('/', (req, res) => {
     try {
@@ -9,10 +10,11 @@ router.get('/', (req, res) => {
     }
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        console.log(req.body, 'here is req body');
-        res.send('post route for post models is getting hit');
+        const { message } = req.body;
+        const createdPost = await Post.create({ message });
+        res.send(createdPost);
     } catch (error) {
         console.log(
             `post route wasn't hit for posts and the error is ${error}`

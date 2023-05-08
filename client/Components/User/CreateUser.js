@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const CreateUser = () => {
-    const [name, setName] = useState('');
+    const [firstName, setName] = useState('');
 
     const onNameChange = ({ value }) => {
         setName(value);
@@ -11,9 +11,9 @@ const CreateUser = () => {
     const onUserSubmit = async (event) => {
         event.preventDefault();
         const { data } = await axios.post('http://localhost:3000/api/user', {
-            name,
+            firstName,
         });
-        console.log(`here is data ${data}`);
+        console.log(data, 'here is data');
     };
 
     return (

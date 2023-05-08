@@ -13,7 +13,7 @@ const CreatePost = () => {
         const { data } = await axios.post('http://localhost:3000/api/post', {
             message,
         });
-        console.log(`here is post route data for posts ${data}`);
+        console.log(data, 'here is data');
     };
 
     return (

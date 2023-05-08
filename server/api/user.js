@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { User } = require('../db/relationships');
 
 router.get('/', (req, res) => {
     try {
@@ -9,10 +10,14 @@ router.get('/', (req, res) => {
     }
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        console.log(req.body, 'here is req body');
-        res.send('user post is getting hit');
+        const { firstName } = req.body;
+        const lastName = 'defaultName';
+        const createdUser = await User.create({ firstName, lastName });
+        console.log(createdUser, 'here is created user');
+        // res.send(createdUser);
+        res.send(createdUser);
     } catch (error) {
         console.log(`here is the post error for user ${error}`);
     }
