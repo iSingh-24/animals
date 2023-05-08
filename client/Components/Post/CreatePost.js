@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const CreatePost = () => {
     const [message, setMessage] = useState('');
@@ -7,9 +8,17 @@ const CreatePost = () => {
         setMessage(value);
     };
 
+    const onPostSubmit = async (event) => {
+        event.preventDefault();
+        const { data } = await axios.post('http://localhost:3000/api/post', {
+            message,
+        });
+        console.log(`here is post route data for posts ${data}`);
+    };
+
     return (
         <div>
-            <form action='submit'>
+            <form action='submit' onSubmit={onPostSubmit}>
                 <input
                     type='text'
                     onChange={({ target }) => onMessageChange(target)}

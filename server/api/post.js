@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 router.get('/', (req, res) => {
     try {
+        console.log(req.body, 'here is req body');
         res.send('post router is getting hit');
     } catch (error) {
         console.log(`posts model in the backend error is ${error}`);
@@ -10,6 +11,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     try {
+        console.log(req.body, 'here is req body');
         res.send('post route for post models is getting hit');
     } catch (error) {
         console.log(
