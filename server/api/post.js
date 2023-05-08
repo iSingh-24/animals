@@ -22,4 +22,6 @@ router.post('/', async (req, res) => {
     }
 });
 
+console.log('hello from post');
+
 module.exports = router;
